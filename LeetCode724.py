@@ -2,8 +2,8 @@ class Solution:
     def pivotIndex(self, nums: list[int]) -> int:
         next = 0 
         previous = 0
-        for i in range(len(nums)):
-            previous = previous + nums[i]
+        for i in range(1,len(nums)):
+            previous = previous + nums[i -1]
             for j in range(i+1, len(nums)):
                 
                 next = next + nums[j]
