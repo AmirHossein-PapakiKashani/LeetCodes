@@ -1,54 +1,23 @@
-# def xor_func(n):
-#     numbers = list(range(n)) 
-#     valid_numbers=[]
-#     valid_numbers=numbers.copy()
-
-#     for num in numbers:
-#         for other in numbers:
-#             result = num ^ other 
-#             if not(0 <= result < n): 
-#                 valid_numbers.remove(num)
-#                 print(num,other,result  )
-#                 break 
-#     return valid_numbers
-
-
-
-
-# mm = int(input())
-# for i in range(mm):
-#     n = int(input())
-#     print(xor_func(n)) 
-    
-    
-    
-    
-    
-    
-def isPowerOfTwo(n):
-    if (n == 0):
-        return False
-    while (n != 1):
-        if (n % 2 != 0):
-            return False
-        n = n // 2
-
-    return True
-
-def xor_func(n):
-    if n%2 == 1:
-        return 1
-    elif isPowerOfTwo(n):
-        return n
-    else:
-        return 2
-
-mm = int(input())
-ans=[]
-for i in range(mm):
-    n = int(input())
-    ans+=[xor_func(n)]
-    
-#print("ans:")
-for i in ans:
-    print (i)
+class Solution:
+    def equalPairs(self, grid: list[list[int]]) -> int:
+        # Convert rows to tuples for hashing
+        rows = [tuple(row) for row in grid]
+        row_counts = {}
+        
+        # Count occurrences of each row
+        for row in rows:
+            row_counts[row] = row_counts.get(row, 0) + 1
+            print(row_counts.get(row, 0))
+        
+        # Convert columns to tuples for hashing
+        columns = [tuple(col) for col in zip(*grid)]
+        
+        # Count matches between rows and columns
+        counter = 0
+        for col in columns:
+            counter += row_counts.get(col, 0)
+            print(row_counts.get(col, 0))
+        
+        return counter
+a = Solution()
+print(a.equalPairs([[3,2,1],[1,7,6],[2,7,7]]))
