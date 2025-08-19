@@ -12,8 +12,3 @@ class Solution:
         b = a.replace("0b", "")
         c = b.count('1')
         return c
-    
-a = Solution()
-print(a.countBits(2))
-
-    
